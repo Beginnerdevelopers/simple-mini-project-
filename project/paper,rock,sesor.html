@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Computer Choice <span id="computer_choice"></span></h2>
+    <h2>User Choice <span id="use_choice"></span></h2>
+    <h2>Result <span id="result"></span></h2>
+
+    <button class="button" id="Paper">Paper</button>
+    <button class="button" id="Rock">Rock</button>
+    <button class="button" id="Sesor">Sesor</button>
+    <script>
+      let computerchoicedisplay = document.getElementById("computer_choice");
+      let userchoicedisplay = document.getElementById("use_choice");
+      let ResultDisplay = document.getElementById("result");
+      let possiblechoicedisplay = document.querySelectorAll("button");
+
+      let userchoice = "";
+      let comchoic = "";
+      possiblechoicedisplay.forEach((possiblechoicedisplay) => {
+        possiblechoicedisplay.addEventListener("click", (e) => {
+          userchoice = e.target.id;
+
+          userchoicedisplay.innerHTML = userchoice;
+
+          getthecomputerchoice();
+          displayresult();
+        });
+      });
+      function getthecomputerchoice() {
+        let RandomNumber = Math.floor(Math.random() * 3) + 1;
+        if (RandomNumber === 1) {
+          comchoic = "Paper";
+        }
+        if (RandomNumber === 2) {
+          comchoic = "Rock";
+        }
+        if (RandomNumber === 3) {
+          comchoic = "Sesor";
+        }
+        computerchoicedisplay.innerHTML = comchoic;
+      }
+      function displayresult() {
+        if (comchoic === userchoice) result = "Draw";
+
+        if (comchoic === "Paper" && userchoice === "Rock") {
+          result = "User win";
+        }
+        if (comchoic === "Paper" && userchoice === "Sesor") {
+          result = "User win";
+        }
+        if (comchoic === "Rock" && userchoice === "Sesor") {
+          result = "Computer win";
+        }
+        if (comchoic === "Rock" && userchoice === "Paper") {
+          result = "Computer win";
+        }
+        if (comchoic === "Sesor" && userchoice === "Rock") {
+          result = "User win";
+        }
+        if (comchoic === "Sesor" && userchoice === "Paper") {
+          result = "Computer win";
+        }
+        ResultDisplay.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>
